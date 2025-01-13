@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  --background: #ffffff;
+  --modal-bg: #fafafa;
+  --foreground: #000000;
+}
+
+.dark {
+  --background: #010101;
+  --modal-bg: #111112;
+  --foreground: #fafafa;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background .3s ease;
+}
+.modal-theme{
+  background-color: var(--modal-bg);
+}
+
+.modal-text{
+  color: var(--foreground);
+  stroke: var(--foreground);
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scrollChat {
+  scrollbar-color: #ffffff00 #ffffff00;
+}
+
+* {
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+}
+
+.swiper-button-prev {
+  scale: 0.7;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.466);
+  border-radius: 50%;
+  padding: 0px 22px;
+  color: black;
+  transition: all 0.2s;
+
+  &:active {
+    scale: 0.5;
+  }
+}
+
+.swiper-button-prev::after {
+  scale: 0.3;
+  font-weight: 900;
+  color: black;
+}
+
+.swiper-button-next {
+  scale: 0.7;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.466);
+  border-radius: 50%;
+  padding: 0px 22px;
+  color: black;
+  transition: all 0.2s;
+
+  &:active {
+    scale: 0.5;
+  }
+}
+
+.swiper-button-next::after {
+  scale: 0.3;
+  font-weight: 900;
+  color: black;
+}
+
+.swiper-button-prev.swiper-button-disabled {
+  display: none;
+}
+
+.swiper-button-prev.swiper-button-disabled::after {
+  display: none;
+}
+
+.swiper-button-next.swiper-button-disabled {
+  display: none;
+}
+
+.swiper-button-next.swiper-button-disabled::after {
+  display: none;
+}
+
+.MuiTabs-indicator.css-11vcyky-MuiTabs-indicator {
+  border-radius: 10px;
+  background-color: var(--foreground);
+  position: absolute;
+  top: 0;
+}
+
+.MuiBox-root.css-miw9fo {
+  border: none;
+  border-top: 1px solid rgba(128, 128, 128, 0.5);
+  padding: 0;
+  margin: 0;
+}
+
+.MuiButtonBase-root.MuiTab-root.MuiTab-textColorBlack.Mui-selected.css-cpzry6-MuiButtonBase-root-MuiTab-root {
+  border-radius: 0 0 10px 10px;
+
+}
+
+.MuiButtonBase-root.MuiTab-root.MuiTab-textColorBlack.css-cpzry6-MuiButtonBase-root-MuiTab-root {
+  border-radius: 0 0 10px 10px;
+
+}
+
+.commentsDots {
+  display: none;
+}
+
+.commentsDotsMain :hover .commentsDots {
+  display: block;
+}
+
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+  width: fit-content !important;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+
+.heart-container {
+  animation: scale-up 0.5s ease-in-out forwards;
+}
+
+@keyframes scale-up {
+  0% {
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.5) translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2) translate(-50%, -100%);
+    opacity: 0;
+  }
+}
