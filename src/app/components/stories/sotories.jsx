@@ -51,7 +51,16 @@ const InstagramStories = () => {
   const [isUploading, setIsUploading] = useState(false)
 
   const { likeStory } = useHomeStore()
-  const myId = jwtDecode(localStorage.getItem("access_token")).sid
+  const [myId, setMyId] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const accessToken = localStorage.getItem("access_token");
+      if (accessToken) {
+        setMyId(jwtDecode(accessToken).sid);
+      }
+    }
+  }, []);
   console.log(myId,"sal");
   console.log(  stories[currentUserIndex]?.stories[currentStoryIndex].id,"ss");
   

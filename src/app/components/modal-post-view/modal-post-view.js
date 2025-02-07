@@ -134,7 +134,6 @@ const ModalViewPost = () => {
      }))
   }
 
-  const myToken  = localStorage.getItem('access_token') ? jwtDecode(localStorage.getItem('access_token'))?.sid : null
 
   const handleClick = (event, postId) => {
     setCurrentPostId(postId);

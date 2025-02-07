@@ -30,8 +30,16 @@ const InstagramStyleChat = ({ path }) => {
   const router = useRouter()
   const { t } = useTranslation()
 
-  const tokenId = jwtDecode(localStorage.getItem("access_token")).sid
+  const [tokenId, setTokenId] = useState(null);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const accessToken = localStorage.getItem("access_token");
+      if (accessToken) {
+        setTokenId(jwtDecode(accessToken).sid);
+      }
+    }
+  }, []);
   const clearSearchValue = () => setSearchValue("")
 
   async function getUsers() {
@@ -50,7 +58,9 @@ const InstagramStyleChat = ({ path }) => {
     try {
       const { data } = await axiosRequest.post(`${apiSoftInsta}/Chat/create-chat?receiverUserId=${id}`)
       getChats()
-      localStorage.setItem("userId", id)
+      if (typeof window !== "undefined") {
+        localStorage.setItem("userId", id)
+      }
       router.push(`/chat/${data.data}`)
       setOpenNewChatModal(false)
     } catch (error) {
@@ -81,10 +91,17 @@ const InstagramStyleChat = ({ path }) => {
       }`}
     >
       <Link
-        onClick={() => {
-          getChats()
-          localStorage.setItem("userId", chat.sendUserId == tokenId ? chat?.receiveUserId : chat.sendUserId)
-        }}
+       onClick={() => {
+        getChats();
+        
+        if (typeof window !== "undefined") {
+          localStorage.setItem(
+            "userId",
+            chat.sendUserId === tokenId ? chat?.receiveUserId : chat.sendUserId
+          );
+        }
+      }}
+      
         href={`/chat/${chat?.chatId}`}
         className="flex items-center gap-3 flex-1"
       >

@@ -15,7 +15,9 @@ async function handleLogin(event) {
   }
   try {
     const {data} = await axios.post(`https://instagram-api.softclub.tj/Account/login`,obj)
-    localStorage.setItem('access_token',data.data)
+    if (typeof window !== "undefined") {
+      localStorage.setItem('access_token',data.data)
+    }
     router.push('/')
   } catch (error) {
     console.log(error);
